@@ -1,1 +1,46 @@
-aba
+<%- include("../partials/header") %>
+
+<form novalidate style="margin-top: 60px; margin-left: auto; margin-right: auto; width: 1000px;"
+  action="/painel/novo-anuncio" method="POST" class="ui segment form">
+  <h2 class="ui dividing header">Criação de anúncio de produto</h2>
+  <div class="ui error form" style="margin-bottom: 10px;">
+    <% if(message && (message.length> 0)){ %>
+      <div class="ui error message">
+        <div class="header">Erro ao realizar operação:</div>
+        <ul class="list">
+          <% message.forEach(erro=> { %>
+            <li>
+              <%= erro.msg %>
+            </li>
+            <% }); %>
+        </ul>
+      </div>
+      <% } %>
+  </div>
+
+
+  <!-- !!!!!!!!!!!!!!setupGeral[ATIVO]!!!!!!!!!!!!!-->
+  <div class=" <%= message.find(e => e.param === 'setupGeral.ATIVO') ? 'error' : '' %> field fluid">
+    <label>Categoria do produto</label>
+    <select name="categoria" class="ui dropdown" id="select">
+        <option value="camisas" selected hidden>
+          Camisa
+        </option>
+        <option value="camisas">Camisa</option>
+        <option value="blusas">Blusa</option>
+        <option value="camisetas">Camiseta</option>
+        <option value="calcas">Calça</option>
+        <option value="intima">Roupa Intima</option>
+        <option value="calcados">Calçado</option>
+        <option value="acessorios">Acessório</option>
+    </select>
+  </div>
+
+
+
+  <button class="ui fluid green basic button" type="submit">
+      <h3>Criar Anúncio</h3>
+  </button>
+</form>
+
+<%- include("../partials/footer") %>
