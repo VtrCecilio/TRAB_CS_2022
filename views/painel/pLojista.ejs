@@ -36,20 +36,37 @@
         </div>
         <% } %>
 
-            <table style="margin: 0;" class="ui single line table">
-                <thead>
-                    <th style="font-size: 24px;"></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+        <table style="margin: 0;" class="ui single line table">
+            <thead>
+                <th style="font-size: 24px;">Seus anúncios:</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
 
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>
+            </thead>
+            <tbody>
+                <% anuncios.forEach(function(anuncio){%>
+                    <tr class="documentos-table-item">
+                        <td style="font-size: 18px;">Nome do produto: <%= anuncio.nomeProduto %>
+                        </td>
+                        <td style="font-size: 18px;">Categoria: <%= anuncio.categoria %>
+                        </td>
+                        <td style="font-size: 18px;">Preço: R$<%= anuncio.precoProduto %>
+                        </td>
+                        <td style="width: 200px;"><a class="ui fluid blue button"
+                                href="/painel/editar-anuncio/<%= anuncio._id %>">Editar</a></td>
+                        <td style="width: 200px;">
+                            <form action="/painel/delete-anuncio/<%= anuncio._id %>"
+                                method="POST">
+                                <button type="submit" class="ui fluid negative button">Deletar</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
 
 
 
-            <%- include("../partials/footer") %>
+<%- include("../partials/footer") %>

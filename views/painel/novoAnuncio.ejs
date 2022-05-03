@@ -19,7 +19,6 @@
   </div>
 
 
-  <!-- !!!!!!!!!!!!!!setupGeral[ATIVO]!!!!!!!!!!!!!-->
   <div class=" <%= message.find(e => e.param === 'setupGeral.ATIVO') ? 'error' : '' %> field fluid">
     <label>Categoria do produto</label>
     <select name="categoria" class="ui dropdown" id="select">
@@ -36,6 +35,17 @@
     </select>
   </div>
 
+  <div class=" <%= message.find(e => e.param === 'setupGeral.limite_maximo') ? 'error' : '' %> field fluid">
+    <label>Nome do produto</label>
+    <input name="nomeProduto" type="text" placeholder="Nome..."
+      value="">
+  </div>
+
+  <div class=" <%= message.find(e => e.param === 'setupGeral.limite_maximo') ? 'error' : '' %> field fluid">
+    <label>Preço do produto</label>
+    <input name="precoProduto" type="number" placeholder="Preço..."
+      value="">
+  </div>
 
 
   <button class="ui fluid green basic button" type="submit">

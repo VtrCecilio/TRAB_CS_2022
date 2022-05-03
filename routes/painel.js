@@ -3,13 +3,22 @@ const router = express.Router();
 
 const User = require('../models/user');
 const Report = require('../models/report');
+const Anuncio = require('../models/anuncio');
 const Middlewares = require('./middlewares');
 
-router.get('/', Middlewares.isLoggedIn, (req, res) => {
-    if(req.user.tipo){
-        return res.render("painel/pCliente");
-    } else {
-        return res.render("painel/pLojista");
+router.get('/', Middlewares.isLoggedIn, async (req, res) => {
+    
+    try {
+        if(req.user.tipo){
+            return res.render("painel/pCliente");
+        } else {
+            const anuncios = await Anuncio.find({loja: req.user._id, deleted: false}); 
+    
+            return res.render("painel/pLojista", {anuncios});
+        }   
+    } catch (e) {
+        console.log(e);
+        return res.status(500).send("Erro interno ao carregar Painel de usuário!");
     }
 });
 
@@ -85,5 +94,40 @@ router.post('/editar-perfil', Middlewares.isLoggedIn, async (req, res) => {
     }
 });
 
+
+router.post('/novo-anuncio', Middlewares.isLoggedIn, async (req, res) => {
+
+    try {
+        const created = await Anuncio.create({
+            ...req.body,
+            deleted: false,
+            loja: req.user._id,
+            qtdAvaliados: 0,
+            avaliacaoTotal: 0
+        });
+
+        req.flash("message", `Novo anúncio criado com sucesso!`);
+        return res.redirect(`/painel`);
+    } catch (e) {
+        console.log(e.message);
+        return res.status(500).send("Erro interno ao criar novo anúncio!");
+    }
+});
+
+router.post('/delete-anuncio/:id', Middlewares.isLoggedIn, async (req, res) => {
+    try {
+        const anuncio = await Anuncio.findOne({_id: req.params.id, loja: req.user._id});
+
+        anuncio.deleted = true;
+        await anuncio.save();
+
+
+        req.flash("message", `Anúncio deletado com sucesso!`);
+        return res.redirect(`/painel`);
+    } catch (e) {
+        console.log(e);
+        return res.status(500).send("Erro interno ao deletar anúncio!");
+    }
+});
 
 module.exports = router;

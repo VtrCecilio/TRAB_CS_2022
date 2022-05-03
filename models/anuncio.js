@@ -5,11 +5,11 @@ const mongoose = require('mongoose');
 
 
 const anuncioSchema = new mongoose.Schema({
-    nomeItem: {
+    nomeProduto: {
         type: String,
         required: true
     },
-    valorItem: {
+    precoProduto: {
         type: String,
         required: true
     },
@@ -21,6 +21,14 @@ const anuncioSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'User', 
         required: true
+    },
+    avaliacaoTotal: {
+        type: Number,
+        required: true
+    },
+    qtdAvaliados: {
+        type: Number,
+        required: true,
     },
     comentarios: [{
         autor: {
