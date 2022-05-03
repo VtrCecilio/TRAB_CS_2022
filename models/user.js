@@ -44,6 +44,9 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    opicionais: {
+        type: String,
+    },
     anuncios: [{
         type: mongoose.Types.ObjectId,
         ref: "Anuncio"

@@ -78,6 +78,10 @@ app.use((req, res, next) => {
       nome: req.user.nome,
       tipo: req.user.tipo,
       email: req.user.email,
+      rua: req.user.rua,
+      bairro: req.user.bairro,
+      numero: req.user.numero,
+      adicionais: req.user.adicionais
     };
   }
   console.log(res.locals.currentUser);

@@ -14,13 +14,25 @@
         </div>
       <% } %>
     </div>
-    <div class="field fluid <%= message.find(e => e.param === 'AdminField.username') ? 'error' : '' %>">
-        <label>Username de usuário</label>
-        <input name="nome" type="text" value="<%= currentUser ? currentUser.nome : '' %>">
-    </div>
     <div class="field fluid <%= message.find(e => e.param === 'AdminField.nome') ? 'error' : '' %>">
         <label>Email de usuário</label>
         <input name="email" type="text" value="<%= currentUser ? currentUser.email : '' %>">
+    </div>
+    <div class="field fluid <%= message.find(e => e.param === 'AdminField.nome') ? 'error' : '' %>">
+        <label>Bairro do usuário</label>
+        <input name="bairro" type="text" value="<%= currentUser ? currentUser.bairro : '' %>">
+    </div>
+    <div class="field fluid <%= message.find(e => e.param === 'AdminField.nome') ? 'error' : '' %>">
+        <label>Rua do usuário</label>
+        <input name="rua" type="text" value="<%= currentUser ? currentUser.rua : '' %>">
+    </div>
+    <div class="field fluid <%= message.find(e => e.param === 'AdminField.nome') ? 'error' : '' %>">
+        <label>Número do prédio do usuário</label>
+        <input name="numero" type="text" value="<%= currentUser ? currentUser.numero : '' %>">
+    </div>
+    <div class="field fluid <%= message.find(e => e.param === 'AdminField.nome') ? 'error' : '' %>">
+        <label>Informações adicionais</label>
+        <input name="adicionais" type="text" value="<%= currentUser ? currentUser.adicionais : '' %>">
     </div>
 
     <button class="ui fluid green basic button" type="submit"><h3>Confirmar edição</h3></button>
