@@ -1,0 +1,24 @@
+<%- include("../partials/header") %>
+
+<form action="/painel/fale-conosco" method="POST" class="ui segment form" style="margin-top: 60px; margin-left: auto; margin-right: auto; width: 1000px;">
+    <div class="ui error form">
+        <% if(message && (message.length > 0)){ %>
+            <div class="ui error message">
+              <div class="header">Erro ao realizar operação:</div>
+              <ul class="list">
+                <% message.forEach(erro => { %>
+                  <li><%= erro.msg %></li>
+                <% }); %>
+              </ul>
+            </div>
+          <% } %>
+    </div>
+    <h2 class="ui dividing header">Fale Conosco:</h2>
+    <div class="field">
+        <label>Explicação do problema/motivo de contato:</label>
+        <textarea name="report[message]" style="resize: none;" cols="30" rows="15" placeholder="Explicação..."></textarea>
+    </div>
+    <button class="ui fluid green basic button" type="submit"><h3>Enviar Mensagem</h3></button>
+</form>
+
+<%- include("../partials/footer") %>

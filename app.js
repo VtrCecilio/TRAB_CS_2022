@@ -80,6 +80,7 @@ app.use((req, res, next) => {
       email: req.user.email,
     };
   }
+  console.log(res.locals.currentUser);
   res.locals.message = req.flash('message');
   return next();
 });

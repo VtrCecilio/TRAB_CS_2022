@@ -9,11 +9,11 @@ router.get('/', (req, res) => {
 });
 
 router.get('/fale-conosco', (req, res) => {
-
+    return res.render("painel/faleConosco");
 });
 
 router.get('/editar-perfil', (req, res) => {
-
+    return res.render("painel/editarPerfil");
 });
 
 

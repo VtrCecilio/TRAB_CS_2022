@@ -1,0 +1,29 @@
+<%- include("../partials/header") %>
+
+<form style="margin-top: 60px; margin-left: auto; margin-right: auto; width: 1000px;" action="/painel/editar-perfil" method="POST" id="form-nova-notificacao" class="ui segment form">
+    <h2 class="ui dividing header">Edição de Perfil</h2>
+    <div class="ui error form" style="margin-bottom: 10px;">
+      <% if(message && (message.length > 0)){ %>
+        <div class="ui error message">
+          <div class="header">Erro ao realizar operação:</div>
+          <ul class="list">
+            <% message.forEach(erro => { %>
+              <li><%= erro.msg %></li>
+            <% }); %>
+          </ul>
+        </div>
+      <% } %>
+    </div>
+    <div class="field fluid <%= message.find(e => e.param === 'AdminField.username') ? 'error' : '' %>">
+        <label>Username de usuário</label>
+        <input name="nome" type="text" value="<%= currentUser ? currentUser.nome : '' %>">
+    </div>
+    <div class="field fluid <%= message.find(e => e.param === 'AdminField.nome') ? 'error' : '' %>">
+        <label>Email de usuário</label>
+        <input name="email" type="text" value="<%= currentUser ? currentUser.email : '' %>">
+    </div>
+
+    <button class="ui fluid green basic button" type="submit"><h3>Confirmar edição</h3></button>
+</form>
+
+<%- include("../partials/footer") %>
