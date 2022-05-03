@@ -8,5 +8,14 @@ router.get('/', (req, res) => {
     return res.render("painel/pCliente");
 });
 
+router.get('/fale-conosco', (req, res) => {
+
+});
+
+router.get('/editar-perfil', (req, res) => {
+
+});
+
+
 
 module.exports = router;

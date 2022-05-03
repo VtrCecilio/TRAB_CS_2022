@@ -19,7 +19,7 @@ router.use((req, res, next) => {
 });
 
 router.get('/', (req, res) => {
-    return res.render("auth/loginEscolha");
+    return res.render("auth/loginUser");
 });
 
 router.get('/login-cliente', (req, res) => {
@@ -28,6 +28,10 @@ router.get('/login-cliente', (req, res) => {
 
 router.get('/login-lojista', (req, res) => {
     return res.render("auth/loginLojista");
+});
+
+router.get('/cadastro-escolha', (req, res) => {
+    return res.render("auth/createEscolha");
 });
 
 router.get('/cadastro-lojista', (req, res) => {
