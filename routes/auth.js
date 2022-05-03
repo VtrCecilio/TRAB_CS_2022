@@ -4,6 +4,12 @@ const router = express.Router();
 const User = require('../models/user');
 const Middlewares = require('./middlewares');
 
+router.get('/logout', (req, res) => {
+    req.logout();
+    return res.redirect("/");
+});
+
+
 router.use((req, res, next) => {
     if(req.isAuthenticated()){
         res.redirect("/painel");

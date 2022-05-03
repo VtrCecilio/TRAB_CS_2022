@@ -1,0 +1,55 @@
+<%- include("../partials/header") %>
+
+    <div style="margin: 0;" class="ui big menu">
+        <div class="item" style="width: 300px;">
+            <a href="/painel" class="ui fluid positive button">Nova setup</a>
+        </div>
+        <div style="width: 240px;" class="item">
+        </div>
+        <div class="item">
+            <div class="ui icon input">
+                <form action="" method="POST">
+                    <select name="categorias" class="ui block dropdown" id="select">
+                        <option value="" selected hidden>Ordenar por categoria</option>
+                        <option value="all">Mostrar todas</option>
+                        <option value="blusas">Blusas</option>
+                        <option value="camisas">Camisas</option>
+                        <option value="camisetas">camisetas</option>
+                        <option value="calcas">calças</option>
+                        <option value="intima">Roupa Intima</option>
+                        <option value="calcados">Calçados</option>
+                        <option value="acessorios">Acessórios</option>
+                    </select>
+                    <button type="submit" class="ui fluid secondary button">Filtrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <% if(message && (message.length> 0)){ %>
+        <div class="ui container success form" style="margin-top: 10px; margin-bottom: 10px;">
+            <div class="ui success message">
+                <div class="header">
+                    <%= message %>
+                </div>
+            </div>
+        </div>
+        <% } %>
+
+            <table style="margin: 0;" class="ui single line table">
+                <thead>
+                    <th style="font-size: 24px;"></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+
+
+
+            <%- include("../partials/footer") %>

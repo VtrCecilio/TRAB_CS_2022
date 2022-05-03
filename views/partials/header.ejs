@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body id="body">
+    <div style="margin: 0;" class="ui massive menu">
+        <div class="ui simple dropdown item">
+            <i class="dropdown icon" style="margin-right: 10px;"></i> Menu de Controle
+            <div class="menu">
+                <a href="/painel" class="item">Home</a>
+                <a href="/painel/geral" class="item">Setups/Gerais</a>
+            </div>
+        </div>
+        <a style="margin-left: auto;" href="/painel" class="borderless header item">
+            Painel do Administrador
+        </a>
+        <div class="right menu">
+            <div class="ui simple dropdown item">
+                <i class="address card outline icon"></i><%= currentUser.username %>
+                <div class="menu">
+                    <a href="/painel/confirm-reset" class="item">Trocar Senha</a>
+                </div>
+            </div>
+            <div class="item">
+                <a href="/logout" class="ui primary button">Sair</a>
+            </div>
+        </div>
+    </div>
