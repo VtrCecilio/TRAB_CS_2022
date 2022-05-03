@@ -44,7 +44,7 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    opicionais: {
+    adicionais: {
         type: String,
     },
     anuncios: [{

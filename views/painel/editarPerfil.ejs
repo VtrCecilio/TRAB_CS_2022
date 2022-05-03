@@ -15,6 +15,10 @@
       <% } %>
     </div>
     <div class="field fluid <%= message.find(e => e.param === 'AdminField.nome') ? 'error' : '' %>">
+        <label>Bairro do usuário</label>
+        <input name="nome" type="text" value="<%= currentUser ? currentUser.nome : '' %>">
+    </div>
+    <div class="field fluid <%= message.find(e => e.param === 'AdminField.nome') ? 'error' : '' %>">
         <label>Email de usuário</label>
         <input name="email" type="text" value="<%= currentUser ? currentUser.email : '' %>">
     </div>

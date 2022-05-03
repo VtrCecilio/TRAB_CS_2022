@@ -81,7 +81,9 @@ app.use((req, res, next) => {
       rua: req.user.rua,
       bairro: req.user.bairro,
       numero: req.user.numero,
-      adicionais: req.user.adicionais
+      adicionais: req.user.adicionais,
+      cpf: req.user.cpf,
+      cnpj: req.user.cnpj
     };
   }
   console.log(res.locals.currentUser);
