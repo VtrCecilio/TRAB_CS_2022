@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iclothes</title>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body id="body">
+    <div id="header-navbar-login" class="ui massive menu">
+        <a href="/" class="voltar-escolha">Voltar</a>
+        <div class="borderless header item" style="margin-right: auto; margin-left: auto;">
+              Iclothes - Sua forma de comprar e vender roupas
+        </div>
+    </div>
+
+
+    <form id="form-login" action="/cadastro-cliente" method="POST" class="ui padded segment form">
+        <h2 class="ui dividing header">Cadastro de Cliente</h2>
+        <div class="field">
+            <label>Escreva o usuário</label>
+            <input type="text" name="username" placeholder="Usuário...">
+        </div>
+        <div class="field">
+            <label>Escreva o seu nome</label>
+            <input type="text" name="nome" placeholder="Nome completo, cliente...">
+        </div>
+        <div class="field">
+            <label>Escreva a senha</label>
+            <input type="password" name="password" placeholder="Senha...">
+        </div>
+        <div class="field">
+            <label>Escreva o CPF</label>
+            <input type="text" name="cpf" placeholder="CPF...">
+        </div>
+        <div class="field">
+            <label>Escreva o nome do bairro</label>
+            <input type="text" name="bairro" placeholder="Bairro...">
+        </div>
+        <div class="field">
+            <label>Escreva o nome da rua</label>
+            <input type="text" name="rua" placeholder="Rua...">
+        </div>
+        <div class="field">
+            <label>Escreva o número do prédio</label>
+            <input type="text" name="numero" placeholder="Número...">
+        </div>
+        <div class="field">
+            <label>Informações adicionais</label>
+            <input type="text" name="adicionais" placeholder="Informações Adicionais...">
+        </div>
+        <button class="ui fluid green basic button" type="submit"><h3>Cadastrar</h3></button>
+    </form>
+
+
+</body>
+</html>
