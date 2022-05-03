@@ -25,14 +25,22 @@
             </div>
         </div>
         <div style="margin-left: auto;"class="borderless header item">
-            Iclothes - Sua forma de comprar e vender vestimentas
+            <% if(currentUser.tipo){ %>
+                Iclothes - Menu do cliente
+            <% } else {%>
+                Iclothes - Menu do lojista
+            <% } %>
         </div>
         <div class="right menu">
             <div class="ui simple dropdown item">
                 <i class="address card outline icon"></i><%= currentUser.username %>
                 <div class="menu">
                     <a href="/painel/editar-perfil" class="item">Editar Perfil</a>
-                    <a href="/painel/historico-compras" class="item">Histórico de compras</a>
+                    <% if(currentUser.tipo){ %>
+                        <a href="/painel/historico-compras" class="item">Histórico de compras</a>
+                    <% } else {%>
+                        <a href="/painel/historico-vendas" class="item">Histórico de vendas</a>
+                    <% } %>
                     <a href="/painel/resetar-senha" class="item">Resetar Senha</a>
                 </div>
             </div>

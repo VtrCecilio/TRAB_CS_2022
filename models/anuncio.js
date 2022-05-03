@@ -19,13 +19,13 @@ const anuncioSchema = new mongoose.Schema({
     },
     loja: {
         type: mongoose.Types.ObjectId,
-        ref: 'Lojista', 
+        ref: 'User', 
         required: true
     },
     comentarios: [{
         autor: {
             type: mongoose.Types.ObjectId,
-            ref: 'Cliente',
+            ref: 'User',
             required: true
         },
         texto: {

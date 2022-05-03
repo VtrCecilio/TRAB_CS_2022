@@ -5,19 +5,27 @@ const User = require('../models/user');
 const Report = require('../models/report');
 const Middlewares = require('./middlewares');
 
-router.get('/', (req, res) => {
-    return res.render("painel/pCliente");
+router.get('/', Middlewares.isLoggedIn, (req, res) => {
+    if(req.user.tipo){
+        return res.render("painel/pCliente");
+    } else {
+        return res.render("painel/pLojista");
+    }
 });
 
-router.get('/fale-conosco', (req, res) => {
+router.get('/fale-conosco', Middlewares.isLoggedIn, (req, res) => {
     return res.render("painel/faleConosco");
 });
 
-router.get('/editar-perfil', (req, res) => {
+router.get('/editar-perfil', Middlewares.isLoggedIn, (req, res) => {
     return res.render("painel/editarPerfil");
 });
 
-router.post('/fale-conosco', async (req, res) => {
+router.get('/novo-anuncio', Middlewares.isLoggedIn, (req, res) => {
+    return res.render("painel/novoAnuncio");
+});
+
+router.post('/fale-conosco', Middlewares.isLoggedIn, async (req, res) => {
     try {
         const created = await Report.create({ username: req.user.username, message: req.body.report.message });
 
@@ -34,7 +42,7 @@ router.post('/fale-conosco', async (req, res) => {
 
 });
 
-router.post('/editar-perfil', async (req, res) => {
+router.post('/editar-perfil', Middlewares.isLoggedIn, async (req, res) => {
     //const errors = validationResult(req);
 
     //if (!errors.isEmpty()) {
