@@ -32,7 +32,15 @@
         <input type="text" name="comentario" placeholder="...">
     </div>
     <button class="ui fluid green basic button" type="submit"><h3>Comentar</h3></button>
-  
+    
+    <% anuncio.comentarios.forEach(function(comentario){%>
+      <tr class="documentos-table-item">
+          <td style="font-size: 18px;">Autor: <%= comentario.nome %>
+          </td>
+          <td style="font-size: 18px;">Comentário: <%= comentario.texto %>
+          </td>
+      </tr>
+    <% }) %>
 
   </form>
 
