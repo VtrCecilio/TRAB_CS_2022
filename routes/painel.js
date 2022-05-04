@@ -57,7 +57,23 @@ router.get('/visualizar-anuncio/:id', Middlewares.isLoggedIn, async (req, res) =
 });
 
 router.post('/postar-comentario/:id', Middlewares.isLoggedIn, async (req, res) => {
-    
+    try {
+        const anuncio = await Anuncio.findOne({_id: req.params.id});
+
+        const comentario = {
+            autor: req.user._id,
+            texto: req.body.comentario
+        }
+
+        anuncio.comentarios.push(comentario);
+        await anuncio.save();
+
+        req.flash("message", "Mensagem enviada com sucesso!!!");
+        return res.redirect(`/painel/visualizar-anuncio/${req.params.id}`);
+    } catch (e) {
+        console.log(e.message);
+        return res.status(500).send("Erro interno ao postar comentário!");
+    }
 });
 
 router.post('/fale-conosco', Middlewares.isLoggedIn, async (req, res) => {
