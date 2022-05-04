@@ -33,7 +33,7 @@
 
     <table style="margin: 0;" class="ui single line table">
         <thead>
-            <th style="font-size: 24px;"></th>
+            <th style="font-size: 24px;">Anúncios atuais:</th>
             <th></th>
             <th></th>
             <th></th>
@@ -41,9 +41,24 @@
 
         </thead>
         <tbody>
-            
+            <% anuncios.forEach(function(anuncio){%>
+                <tr class="documentos-table-item">
+                    <td style="font-size: 18px;">Nome do produto: <%= anuncio.nomeProduto %>
+                    </td>
+                    <td style="font-size: 18px;">Vendedor: <%= anuncio.loja.nome %>
+                    </td>
+                    <td style="font-size: 18px;">Categoria: <%= anuncio.categoria %>
+                    </td>
+                    <td style="font-size: 18px;">Preço: R$<%= anuncio.precoProduto %>
+                    </td>
+                    <td style="width: 200px;"><a class="ui fluid blue button"
+                            href="/painel/visualizar-anuncio/<%= anuncio._id %>">Visualizar</a>
+                    </td>
+                </tr>
+            <% }) %>
         </tbody>
     </table>
+
 
 
 

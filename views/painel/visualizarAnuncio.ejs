@@ -1,0 +1,37 @@
+<%- include("../partials/header") %>
+
+  <div style="margin-top: 60px; margin-left: auto; margin-right: auto; width: 1000px; margin-bottom: 30px;"
+    class="ui form card">
+    <div class="content">
+      <div class="ui dividing header">
+        <h1>Anúncio de: <%= anuncio.nomeProduto %>
+        </h1>
+      </div>
+
+
+      <div class="field fluid" style="text-align: center; font-size: 20px; margin-bottom: 15px;">Nome do vendedor:
+        <%= anuncio.loja.nome %>
+      </div>
+
+      <div class="field fluid" style="text-align: center; font-size: 20px; margin-bottom: 15px;">Email de contato:
+        <%= anuncio.loja.email %>
+      </div>
+
+      <div class="field fluid" style="text-align: center; font-size: 20px; margin-bottom: 25px;"> Preço:
+        <%= anuncio.precoProduto %>
+      </div>
+
+
+    </div>
+  </div>
+
+  <form id="form-login" action="/postar-comentario/" method="POST" class="ui padded segment form">
+    <h3 class="ui dividing header">Discussão sobre o produto</h3>
+    <div class="field">
+        <label>Escreva o seu comentário</label>
+        <input type="text" name="comentario" placeholder="...">
+    </div>
+    <button class="ui fluid green basic button" type="submit"><h3>Comentar</h3></button>
+  </form>
+
+  <%- include("../partials/footer") %>

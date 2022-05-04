@@ -6,11 +6,16 @@ const Report = require('../models/report');
 const Anuncio = require('../models/anuncio');
 const Middlewares = require('./middlewares');
 
+
 router.get('/', Middlewares.isLoggedIn, async (req, res) => {
     
     try {
         if(req.user.tipo){
-            return res.render("painel/pCliente");
+            const anuncios = await Anuncio.find({deleted: false}).populate({path: 'loja'});
+
+            console.log(anuncios);
+
+            return res.render("painel/pCliente", {anuncios});
         } else {
             const anuncios = await Anuncio.find({loja: req.user._id, deleted: false}); 
     
@@ -22,16 +27,37 @@ router.get('/', Middlewares.isLoggedIn, async (req, res) => {
     }
 });
 
+
 router.get('/fale-conosco', Middlewares.isLoggedIn, (req, res) => {
     return res.render("painel/faleConosco");
 });
+
 
 router.get('/editar-perfil', Middlewares.isLoggedIn, (req, res) => {
     return res.render("painel/editarPerfil");
 });
 
+
 router.get('/novo-anuncio', Middlewares.isLoggedIn, (req, res) => {
     return res.render("painel/novoAnuncio");
+});
+
+
+router.get('/visualizar-anuncio/:id', Middlewares.isLoggedIn, async (req, res) => {
+    try {
+        const anuncio = await Anuncio.findOne({_id: req.params.id}).populate({path: 'loja'});
+
+        console.log(anuncio);
+
+        return res.render("painel/visualizarAnuncio", {anuncio});
+    } catch (e) {
+        console.log(e.message);
+        return res.status(500).send('Erro interno ao gerar visualização de anúncio!');
+    }
+});
+
+router.post('/postar-comentario/:id', Middlewares.isLoggedIn, async (req, res) => {
+    
 });
 
 router.post('/fale-conosco', Middlewares.isLoggedIn, async (req, res) => {
@@ -50,6 +76,7 @@ router.post('/fale-conosco', Middlewares.isLoggedIn, async (req, res) => {
     }
 
 });
+
 
 router.post('/editar-perfil', Middlewares.isLoggedIn, async (req, res) => {
     //const errors = validationResult(req);
@@ -113,6 +140,7 @@ router.post('/novo-anuncio', Middlewares.isLoggedIn, async (req, res) => {
         return res.status(500).send("Erro interno ao criar novo anúncio!");
     }
 });
+
 
 router.post('/delete-anuncio/:id', Middlewares.isLoggedIn, async (req, res) => {
     try {
