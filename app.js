@@ -86,7 +86,6 @@ app.use((req, res, next) => {
       cnpj: req.user.cnpj
     };
   }
-  console.log(res.locals.currentUser);
   res.locals.message = req.flash('message');
   return next();
 });

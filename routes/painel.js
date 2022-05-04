@@ -13,7 +13,6 @@ router.get('/', Middlewares.isLoggedIn, async (req, res) => {
         if(req.user.tipo){
             const anuncios = await Anuncio.find({deleted: false}).populate({path: 'loja'});
 
-            console.log(anuncios);
 
             return res.render("painel/pCliente", {anuncios});
         } else {
@@ -47,8 +46,6 @@ router.get('/visualizar-anuncio/:id', Middlewares.isLoggedIn, async (req, res) =
     try {
         const anuncio = await Anuncio.findOne({_id: req.params.id}).populate({path: 'loja'});
 
-        console.log(anuncio);
-
         return res.render("painel/visualizarAnuncio", {anuncio});
     } catch (e) {
         console.log(e.message);
@@ -56,12 +53,12 @@ router.get('/visualizar-anuncio/:id', Middlewares.isLoggedIn, async (req, res) =
     }
 });
 
-router.post('/postar-comentario/:id', Middlewares.isLoggedIn, async (req, res) => {
+router.post('/postar-comentario/:id', Middlewares.isLoggedIn, async (req, res) => {    
     try {
         const anuncio = await Anuncio.findOne({_id: req.params.id});
 
         const comentario = {
-            autor: req.user._id,
+            autor: req.user.nome,
             texto: req.body.comentario
         }
 
@@ -112,9 +109,6 @@ router.post('/editar-perfil', Middlewares.isLoggedIn, async (req, res) => {
         user.adicionais = req.body.adicionais;
 
         await user.save();
-
-        console.log(user);
-        console.log(req.user);
 
         if (!user) {
             return res.status(404).send("Erro 404. Página não encontrada!");

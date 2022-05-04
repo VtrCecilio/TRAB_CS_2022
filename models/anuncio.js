@@ -32,8 +32,7 @@ const anuncioSchema = new mongoose.Schema({
     },
     comentarios: [{
         autor: {
-            type: mongoose.Types.ObjectId,
-            ref: 'User',
+            type: String,
             required: true
         },
         texto: {
