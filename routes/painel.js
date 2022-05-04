@@ -53,6 +53,35 @@ router.get('/visualizar-anuncio/:id', Middlewares.isLoggedIn, async (req, res) =
     }
 });
 
+router.post('/', Middlewares.isLoggedIn, async (req, res) => {
+    try {
+        if(req.user.tipo){
+            let anuncios;
+
+            if(req.body.filtro === "all"){
+                anuncios = await Anuncio.find({deleted: false}).populate({path: 'loja'});
+            } else {
+                anuncios = await Anuncio.find({deleted: false, categoria: req.body.filtro}).populate({path: 'loja'});
+            }
+
+            return res.render("painel/pCliente", {anuncios});
+        } else {
+            let anuncios;
+
+            if(req.body.filtro === "all"){
+                anuncios = await Anuncio.find({deleted: false, loja: req.user._id}).populate({path: 'loja'});
+            } else {
+                anuncios = await Anuncio.find({deleted: false, categoria: req.body.filtro, loja: req.user._id}).populate({path: 'loja'});
+            }
+    
+            return res.render("painel/pLojista", {anuncios});
+        }   
+    } catch (e) {
+        console.log(e);
+        return res.status(500).send("Erro interno ao carregar Painel de usuário!");
+    }
+});
+
 router.post('/postar-comentario/:id', Middlewares.isLoggedIn, async (req, res) => {    
     try {
         const anuncio = await Anuncio.findOne({_id: req.params.id});

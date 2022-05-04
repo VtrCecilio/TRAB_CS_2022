@@ -22,6 +22,16 @@
         </div>
     </div>
 
+  
+    <% if(message && (message.length> 0)){ %>
+      <div class="ui container success form" style="margin-top: 10px; margin-bottom: 10px;">
+          <div class="ui success message">
+              <div class="header">
+                  <%= message %>
+              </div>
+          </div>
+      </div>
+      <% } %>
 
   <div class="ui placeholder segment" style="margin-left: 5%;margin-right: 5%; margin-top: 7%;">
     <div class="ui two column very relaxed stackable grid">

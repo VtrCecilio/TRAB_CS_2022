@@ -75,7 +75,7 @@ router.post('/cadastro-cliente', async (req, res) => {
     console.log("        Cliente Criado");
     console.log("      Nome Cliente: " + NewCliente.username);
     console.log("===============================");
-    //req.flash("message", "Admin: " + NewAdmin.username + " foi cadastrado com sucesso!");
+    req.flash("message", "Conta criada com sucesso!");
     return res.redirect("/");
 });
 
@@ -112,7 +112,7 @@ router.post('/cadastro-lojista', async (req, res) => {
     console.log("        Lojista Criado");
     console.log("      Nome Lojista: " + NewLojista.username);
     console.log("===============================");
-    //req.flash("message", "Admin: " + NewAdmin.username + " foi cadastrado com sucesso!");
+    req.flash("message", "Conta criada com sucesso!");
     return res.redirect("/");
 });
 

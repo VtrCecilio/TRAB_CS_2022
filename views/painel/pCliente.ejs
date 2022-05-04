@@ -3,17 +3,17 @@
     <div style="margin: 0;" class="ui big menu">
         <div class="item" style="margin-left: auto; margin-right: auto;">
             <div class="ui icon input">
-                <form action="" method="POST">
-                    <select name="categorias" class="ui block dropdown" id="select">
-                        <option value="" selected hidden>Ordenar por categoria</option>
+                <form action="/painel" method="POST">
+                    <select name="filtro" class="ui block dropdown" id="select">
+                        <option value="all" selected hidden>Filtrar por categoria</option>
                         <option value="all">Mostrar todas</option>
-                        <option value="blusas">Blusas</option>
-                        <option value="camisas">Camisas</option>
-                        <option value="camisetas">camisetas</option>
-                        <option value="calcas">calças</option>
-                        <option value="intima">Roupa Intima</option>
-                        <option value="calcados">Calçados</option>
-                        <option value="acessorios">Acessórios</option>
+                        <option value="Blusas">Blusas</option>
+                        <option value="Camisas">Camisas</option>
+                        <option value="Camisetas">Camisetas</option>
+                        <option value="Calças">Calças</option>
+                        <option value="Roupa íntima">Roupa íntima</option>
+                        <option value="Calçados">Calçados</option>
+                        <option value="Acessórios">Acessórios</option>
                     </select>
                     <button type="submit" class="ui fluid secondary button">Filtrar</button>
                 </form>
